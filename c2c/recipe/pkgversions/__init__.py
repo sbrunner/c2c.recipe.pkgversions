@@ -32,9 +32,7 @@ class PkgVersions(object):
                             'p': p,
                         }
                     )
-                # add '.0' to restrict the comparison
-                # if not '4.8.0-0ppa1' < '4.8.1' return false
-                elif parse_version(versions[p]) < parse_version(v + '.0'):
+                elif parse_version(versions[p]) < parse_version(v):
                     errors.append(
                         ('The package %(p)s is on version %(av)s and he ' +
                         'should be at least %(rv)s.') % {
