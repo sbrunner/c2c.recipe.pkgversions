@@ -35,11 +35,11 @@ class PkgVersions(object):
                 elif parse_version(versions[p]) < parse_version(v):
                     errors.append(
                         ('The package %(p)s is on version %(av)s and he ' +
-                        'should be at least %(rv)s.') % {
-                            'p': p,
-                            'av': versions[p],
-                            'rv': v,
-                        }
+                            'should be at least %(rv)s.') % {
+                                'p': p,
+                                'av': versions[p],
+                                'rv': v,
+                            }
                     )
 
         if len(errors) > 0:
