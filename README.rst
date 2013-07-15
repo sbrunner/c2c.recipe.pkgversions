@@ -3,6 +3,8 @@ c2c.recipe.pkgversions
 
 Recipe used to test the Debian package requirement.
 
+This recipe requires that dpkg is in the path.
+
 Example of use::
 
     [buildout]
@@ -11,7 +13,7 @@ Example of use::
         ...
 
     [pkgversions]
-    recipe = c2c.recipe.facts
+    recipe = c2c.recipe.pkgversions
     mapserver-bin = 6.0.3
     libproj0 = 4.8
 
