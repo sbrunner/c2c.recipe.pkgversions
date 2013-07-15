@@ -21,7 +21,7 @@ class PkgVersions(object):
             pkg = line.split()
             # ignore title and get inly installed
             if len(pkg) > 2 and pkg[0] == 'ii':
-                versions[pkg[1]] = pkg[2]
+                versions[pkg[1].split(':')[0]] = pkg[2]
 
         errors = []
         for p, v in options.items():
