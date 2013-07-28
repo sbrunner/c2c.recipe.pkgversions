@@ -56,10 +56,10 @@ class PkgVersions(object):
         elif parse_version(self.versions[package]) < parse_version(version):
             return ('The package %(p)s is on version %(av)s and he ' +
                     'should be at least %(rv)s.') % {
-                        'p': package,
-                        'av': self.versions[package],
-                        'rv': version,
-                    }
+                'p': package,
+                'av': self.versions[package],
+                'rv': version,
+                }
         return None
 
     def install(self):
