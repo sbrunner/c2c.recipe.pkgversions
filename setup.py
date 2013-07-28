@@ -21,7 +21,7 @@ tests_require = [
 
 setup(
     name='c2c.recipe.pkgversions',
-    version='0.2',
+    version='0.3',
     description='Test dependencies on Debian package versions',
     long_description=README,
     classifiers=[
