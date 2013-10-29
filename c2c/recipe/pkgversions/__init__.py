@@ -15,11 +15,10 @@ class PkgVersions(object):
             self.env['PATH'] = '/usr/bin:/bin'
 
         p = Popen(['dpkg', '--list'], stdout=PIPE, env=self.env)
-#        p.wait()
         self.versions = {}
         for line in p.stdout.readlines():
             pkg = line.split()
-            # ignore title and get inly installed
+            # ignore title and get only installed
             if len(pkg) > 2 and pkg[0] == 'ii':
                 self.versions[pkg[1].split(':')[0]] = pkg[2]
 
@@ -34,7 +33,19 @@ class PkgVersions(object):
             raise UserError('\n'.join(errors))
 
     def test_package(self, package, version, can_be_virtual=True):
-        if not package in self.versions:
+        if version == 'installed':
+            version = 'dev'
+        if version == '':
+            return None
+        elif version == 'not-installed':
+            if package in self.versions:
+                ''
+                return 'The package %(p)s is installed but he shouldni\'t.' % {
+                    'p': package,
+                }
+            else:
+                return None
+        elif not package in self.versions:
             found = False
             if can_be_virtual:
                 p = Popen(['apt-cache', 'showpkg', package], stdout=PIPE, env=self.env)
